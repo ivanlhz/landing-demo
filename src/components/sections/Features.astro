@@ -1,0 +1,51 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import FeatureBlock from './features/FeatureBlock.astro';
+import PriorityCard from './features/PriorityCard.astro';
+import AskCard from './features/AskCard.astro';
+import AgendaCard from './features/AgendaCard.astro';
+import MetricsCard from './features/MetricsCard.astro';
+---
+
+<Section id="producto" bg="bg-bg-muted" class="flex flex-col gap-10 py-20 lg:py-24">
+  <SectionHeading
+    eyebrow="El producto"
+    title="Menos gestión, más producto enviado."
+    subtitle="Cada parte de Stride está viva: prioriza, responde y te avisa para que el equipo solo tenga que construir."
+  />
+
+  <!-- Row 1: wide + narrow -->
+  <div class="flex flex-col gap-6 lg:grid lg:grid-cols-[1fr_440px] lg:items-stretch">
+    <FeatureBlock
+      title="Roadmap que se prioriza solo"
+      description="Stride reordena el backlog por impacto y dependencias mientras tu equipo trabaja."
+    >
+      <PriorityCard />
+    </FeatureBlock>
+
+    <FeatureBlock
+      title="Pregúntale a tu roadmap"
+      description="Estado, riesgos y siguiente paso al instante, en lenguaje natural."
+    >
+      <AskCard />
+    </FeatureBlock>
+  </div>
+
+  <!-- Row 2: narrow + wide -->
+  <div class="flex flex-col gap-6 lg:grid lg:grid-cols-[440px_1fr] lg:items-stretch">
+    <FeatureBlock
+      title="Todo, en vivo"
+      description="Estados que respiran y avisos que aparecen justo a tiempo."
+    >
+      <AgendaCard />
+    </FeatureBlock>
+
+    <FeatureBlock
+      title="Métricas que importan"
+      description="Velocidad, carga y foco del equipo sin abrir otra herramienta."
+    >
+      <MetricsCard />
+    </FeatureBlock>
+  </div>
+</Section>

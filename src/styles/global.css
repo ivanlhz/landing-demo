@@ -1,0 +1,76 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens — Stride (Design-Taste)
+  Mapped 1:1 from the Pencil design variables (d-* set).
+  Tailwind v4 generates utilities from these custom properties:
+    --color-*  -> bg-*, text-*, border-*, fill-*, ...
+    --radius-* -> rounded-*
+    --font-*   -> font-*
+*/
+@theme {
+  /* Surfaces */
+  --color-bg: #fafafa; /* page background       (d-bg)      */
+  --color-bg-muted: #f4f4f5; /* alternate sections    (d-bg-2)    */
+  --color-surface: #ffffff; /* cards                 (d-surface) */
+
+  /* Ink / text */
+  --color-ink: #18181b; /* primary text + dark   (d-ink)     */
+  --color-ink-2: #52525b; /* secondary text        (d-ink-2)   */
+  --color-ink-3: #a1a1aa; /* tertiary / muted      (d-ink-3)   */
+
+  /* Lines */
+  --color-line: #e4e4e7; /* borders               (d-line)    */
+
+  /* Accent */
+  --color-accent: #da3b5e; /* primary accent        (d-accent)     */
+  --color-accent-ink: #b02749; /* accent text on soft   (d-accent-ink) */
+  --color-accent-soft: #da3b5e14; /* ~8% accent fill       (d-accent-soft)*/
+  --color-on-accent: #ffffff; /*                       (d-on-accent)  */
+
+  /* Radii */
+  --radius-sm: 10px; /* (d-r-sm) */
+  --radius-md: 18px; /* (d-r-md) */
+  --radius-lg: 28px; /* (d-r-lg) */
+  --radius-xl: 40px; /* (d-r-xl) */
+
+  /* Type families */
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Shared content width (1440 canvas − 2×80 padding) */
+  --container-page: 1440px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Reusable composition helpers ------------------------------------------- */
+
+/* Section horizontal rhythm: full-bleed bg, centered 1440 content, 80px gutters */
+.page-shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-page);
+  padding-inline: 1.25rem; /* 20px mobile */
+}
+@media (min-width: 640px) {
+  .page-shell {
+    padding-inline: 2.5rem; /* 40px */
+  }
+}
+@media (min-width: 1024px) {
+  .page-shell {
+    padding-inline: 5rem; /* 80px — matches design */
+  }
+}

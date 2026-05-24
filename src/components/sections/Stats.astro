@@ -1,0 +1,32 @@
+---
+import Section from '../ui/Section.astro';
+
+const stats = [
+  { value: '3.240', label: 'equipos de producto' },
+  { value: '−38%', label: 'tiempo en reuniones' },
+  { value: '4.8/5', label: 'valoración en G2' },
+  { value: '11 min', label: 'para migrar desde Jira' },
+];
+---
+
+<Section bg="bg-bg" class="py-16 lg:py-[72px]">
+  <dl
+    class="grid grid-cols-2 gap-x-6 gap-y-10 lg:flex lg:items-center lg:justify-between lg:gap-0"
+  >
+    {
+      stats.map((s, i) => (
+        <div class="flex items-center lg:flex-1">
+          <div class="flex flex-1 flex-col gap-2 lg:px-7">
+            <dt class="font-mono text-[40px] font-semibold tracking-[-1.5px] text-ink">
+              {s.value}
+            </dt>
+            <dd class="text-[14px] leading-[1.4] text-ink-2">{s.label}</dd>
+          </div>
+          {i < stats.length - 1 && (
+            <span class="hidden h-[52px] w-px bg-line lg:block" />
+          )}
+        </div>
+      ))
+    }
+  </dl>
+</Section>

@@ -1,0 +1,35 @@
+---
+import Section from '../ui/Section.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import ProPlan from './pricing/ProPlan.astro';
+import PlanCard from './pricing/PlanCard.astro';
+---
+
+<Section id="precios" bg="bg-bg" class="flex flex-col gap-12 py-20 lg:py-24">
+  <SectionHeading
+    eyebrow="Precios"
+    title="Un precio honesto. Sin sorpresas al escalar."
+    subtitle="Para equipos de 5 a 20. Gratis hasta 10 personas; cuando crezcáis, un solo plan lo cubre casi todo."
+  />
+
+  <div class="flex flex-col gap-6 lg:grid lg:grid-cols-[1fr_420px] lg:items-start">
+    <ProPlan />
+
+    <div class="flex flex-col gap-6">
+      <PlanCard
+        name="Free"
+        price="€0"
+        note="Hasta 10 personas."
+        features={['Roadmap y tableros', '2 proyectos', 'Importación desde Jira']}
+        ctaLabel="Crear cuenta"
+      />
+      <PlanCard
+        name="Business"
+        price="€19"
+        note="Control y seguridad."
+        features={['Todo lo de Pro', 'SCIM y permisos', 'SLA dedicado']}
+        ctaLabel="Hablar con ventas"
+      />
+    </div>
+  </div>
+</Section>

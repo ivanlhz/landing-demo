@@ -1,0 +1,27 @@
+# build output
+dist/
+.output/
+
+# local screenshots / scratch
+.shots/
+
+# dependencies
+node_modules/
+
+# astro
+.astro/
+
+# environment variables
+.env
+.env.production
+
+# local registry SSL workaround (do not commit the relaxed strict-ssl setting)
+.npmrc
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+
+# macOS / editor
+.DS_Store
+.vscode/

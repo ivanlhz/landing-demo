@@ -1,0 +1,36 @@
+---
+import Icon from '../../ui/Icon.astro';
+
+const agenda = [
+  { time: '09:30', label: 'Daily de producto', active: true },
+  { time: '11:00', label: 'Revisión de roadmap', active: false },
+  { time: '15:00', label: 'Demo con cliente', active: false },
+];
+---
+
+<span class="font-mono text-[11px] tracking-[0.6px] text-ink-3">AGENDA · HOY</span>
+
+<ul class="flex flex-col gap-2.5">
+  {
+    agenda.map((item) => (
+      <li class="flex items-center gap-3 rounded-[18px] border border-line bg-bg px-3.5 py-3">
+        <span class="font-mono text-[12px] text-ink-3">{item.time}</span>
+        <span
+          class:list={['h-2 w-2 rounded-full', item.active ? 'bg-accent' : 'bg-ink-3']}
+        />
+        <span class="flex-1 text-[13px] font-medium text-ink">{item.label}</span>
+      </li>
+    ))
+  }
+</ul>
+
+<!-- Completed toast -->
+<div
+  class="flex items-center gap-2.5 rounded-[18px] border border-line bg-surface px-3.5 py-2.5 shadow-[0_8px_18px_-4px_rgba(24,24,27,0.12)]"
+>
+  <span class="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-accent">
+    <Icon name="check" size={13} class="text-on-accent" />
+  </span>
+  <span class="flex-1 text-[13px] font-medium text-ink">Daily completado</span>
+  <span class="font-mono text-[11px] text-ink-3">ahora</span>
+</div>

@@ -1,0 +1,24 @@
+---
+import Icon from '../../ui/Icon.astro';
+import MetricTile from './MetricTile.astro';
+
+const metrics = [
+  { label: 'Velocidad', value: '47.2', trend: '+6.4 pts', trendIcon: 'trending-up', active: true },
+  { label: 'Entregado', value: '312', trend: '+28 tareas', trendIcon: 'trending-up', active: false },
+  { label: 'Lead time', value: '3.1d', trend: '−0.7 medio', trendIcon: 'trending-down', active: false },
+  { label: 'Foco', value: '81%', trend: '+9 deep work', trendIcon: 'trending-up', active: false },
+] as const;
+---
+
+<span class="font-mono text-[11px] tracking-[0.6px] text-ink-3">ESTA SEMANA</span>
+
+<div class="grid grid-cols-2 gap-3.5">
+  {metrics.map((m) => <MetricTile {...m} />)}
+</div>
+
+<div class="flex items-center gap-2.5 rounded-[18px] bg-bg px-3.5 py-3">
+  <Icon name="zap" size={15} class="shrink-0 text-accent" />
+  <span class="text-[13px] font-medium text-ink-2">
+    El equipo va un 18% por delante del plan del sprint.
+  </span>
+</div>

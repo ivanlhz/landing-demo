@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+
+/** Badge — small pill. `accent` = soft accent bg + accent-ink text. */
+interface Props {
+  tone?: 'accent' | 'neutral';
+  icon?: string;
+  dot?: boolean;
+  class?: string;
+}
+const { tone = 'accent', icon, dot = false, class: className = '' } = Astro.props;
+
+const tones: Record<string, string> = {
+  accent: 'bg-accent-soft text-accent-ink',
+  neutral: 'bg-bg-muted text-ink-3 border border-line',
+};
+---
+
+<span
+  class={`inline-flex items-center gap-1.5 rounded-full px-[10px] py-[5px] font-mono text-[11px] ${tones[tone]} ${className}`}
+>
+  {dot && <span class="h-[7px] w-[7px] rounded-full bg-accent"></span>}
+  {icon && <Icon name={icon} size={12} class="text-accent" />}
+  <slot />
+</span>

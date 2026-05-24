@@ -1,0 +1,15 @@
+---
+/** Eyebrow — monospaced uppercase kicker above headings. */
+interface Props {
+  tone?: 'accent' | 'muted';
+  class?: string;
+}
+const { tone = 'accent', class: className = '' } = Astro.props;
+const color = tone === 'accent' ? 'text-accent' : 'text-ink-3';
+---
+
+<span
+  class={`font-mono text-[13px] font-normal uppercase tracking-[1.5px] ${color} ${className}`}
+>
+  <slot />
+</span>

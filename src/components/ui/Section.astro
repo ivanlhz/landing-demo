@@ -1,0 +1,32 @@
+---
+/**
+ * Section — full-bleed background + centered 1440px content shell with the
+ * design's 80px horizontal gutters (responsive). Vertical padding is passed
+ * in via `class` so each section keeps its exact rhythm.
+ */
+interface Props {
+  id?: string;
+  as?: keyof HTMLElementTagNameMap;
+  bg?: string; // background utility, e.g. "bg-bg" | "bg-bg-muted" | "bg-ink"
+  class?: string; // inner shell utilities (vertical padding, etc.)
+  shellClass?: string; // extra utilities for the inner shell
+  border?: 'top' | 'none';
+}
+
+const {
+  id,
+  as: Tag = 'section',
+  bg = 'bg-bg',
+  class: className = '',
+  shellClass = '',
+  border = 'none',
+} = Astro.props;
+
+const borderCls = border === 'top' ? 'border-t border-line' : '';
+---
+
+<Tag id={id} class={`w-full ${bg} ${borderCls}`}>
+  <div class={`page-shell ${className} ${shellClass}`}>
+    <slot />
+  </div>
+</Tag>

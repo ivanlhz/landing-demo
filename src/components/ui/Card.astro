@@ -1,0 +1,29 @@
+---
+/**
+ * Card — white surface with the design's radii + soft elevation.
+ * `tone="featured"` adds the accent border used by the Pro plan & active items.
+ */
+interface Props {
+  radius?: 'lg' | 'xl';
+  tone?: 'default' | 'featured';
+  elevated?: boolean;
+  class?: string;
+}
+const {
+  radius = 'xl',
+  tone = 'default',
+  elevated = true,
+  class: className = '',
+} = Astro.props;
+
+const radiusCls = radius === 'xl' ? 'rounded-[40px]' : 'rounded-[28px]';
+const borderCls =
+  tone === 'featured' ? 'border-[1.5px] border-accent' : 'border border-line';
+const shadowCls = elevated
+  ? 'shadow-[0_20px_44px_-14px_rgba(24,24,27,0.08)]'
+  : '';
+---
+
+<div class={`bg-surface ${radiusCls} ${borderCls} ${shadowCls} ${className}`}>
+  <slot />
+</div>

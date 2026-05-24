@@ -1,0 +1,42 @@
+---
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import SprintCard from './hero/SprintCard.astro';
+---
+
+<Section bg="bg-bg" class="flex flex-col gap-14 pt-20 pb-24 lg:grid lg:grid-cols-[1fr_400px] lg:items-center lg:pt-[100px] lg:pb-[110px]">
+  <!-- Copy column -->
+  <div class="flex max-w-[720px] flex-col gap-7">
+    <Eyebrow>Sistema operativo de producto</Eyebrow>
+
+    <h1
+      class="font-sans text-[40px] font-semibold leading-[1.02] tracking-[-1.6px] text-ink sm:text-[48px] sm:tracking-[-2px] lg:text-[58px] lg:tracking-[-2.2px]"
+    >
+      Del backlog al lanzamiento, sin que el equipo pierda el hilo.
+    </h1>
+
+    <p class="max-w-[560px] text-[18px] leading-[1.55] text-ink-2">
+      Stride reúne roadmap, sprints y tareas en un mismo lugar. Para equipos de
+      producto de 5 a 20 personas que prefieren construir antes que administrar
+      herramientas.
+    </p>
+
+    <div class="flex flex-wrap items-center gap-3.5 pt-1.5">
+      <Button href="#empieza" size="md">Empieza gratis</Button>
+      <Button href="#producto" variant="secondary" size="md" icon="arrow-up-right">
+        Ver el producto
+      </Button>
+    </div>
+
+    <p class="font-mono text-[12px] leading-[1.6] tracking-[0.2px] text-ink-3">
+      Gratis hasta 10 personas <span class="text-line">/</span> sin tarjeta
+      <span class="text-line">/</span> 4.8 en G2
+    </p>
+  </div>
+
+  <!-- Visual column -->
+  <div class="flex justify-center lg:justify-end">
+    <SprintCard />
+  </div>
+</Section>

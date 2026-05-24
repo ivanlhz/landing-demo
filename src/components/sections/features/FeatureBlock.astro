@@ -1,0 +1,25 @@
+---
+import Card from '../../ui/Card.astro';
+
+/**
+ * FeatureBlock — composition wrapper for the bento grid: a large card
+ * (default slot) followed by a title + description caption underneath.
+ */
+interface Props {
+  title: string;
+  description: string;
+  class?: string;
+}
+const { title, description, class: className = '' } = Astro.props;
+---
+
+<div class={`flex flex-col gap-[18px] ${className}`}>
+  <Card radius="xl" class="flex flex-1 flex-col gap-4 p-8">
+    <slot />
+  </Card>
+
+  <div class="flex flex-col gap-1.5 px-1.5 py-0.5">
+    <h3 class="text-[17px] font-semibold text-ink">{title}</h3>
+    <p class="text-[14px] leading-[1.5] text-ink-2">{description}</p>
+  </div>
+</div>

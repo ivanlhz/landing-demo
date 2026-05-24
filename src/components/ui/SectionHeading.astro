@@ -1,0 +1,45 @@
+---
+import Eyebrow from './Eyebrow.astro';
+
+/**
+ * SectionHeading — composition of eyebrow + title + optional subtitle.
+ * `tone="dark"` flips colors for dark sections.
+ */
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  tone?: 'light' | 'dark';
+  size?: 'md' | 'lg';
+  maxWidth?: string; // utility for the heading block width, e.g. "max-w-[760px]"
+  class?: string;
+}
+const {
+  eyebrow,
+  title,
+  subtitle,
+  tone = 'light',
+  size = 'lg',
+  maxWidth = 'max-w-[760px]',
+  class: className = '',
+} = Astro.props;
+
+const titleColor = tone === 'dark' ? 'text-bg' : 'text-ink';
+const subColor = tone === 'dark' ? 'text-ink-3' : 'text-ink-2';
+const titleSize =
+  size === 'lg'
+    ? 'text-[32px] sm:text-[36px] lg:text-[40px] tracking-[-1.6px] leading-[1.05]'
+    : 'text-[28px] sm:text-[32px] lg:text-[36px] tracking-[-1.4px] leading-[1.05]';
+---
+
+<div class={`flex flex-col gap-3.5 ${maxWidth} ${className}`}>
+  <Eyebrow>{eyebrow}</Eyebrow>
+  <h2 class={`font-sans font-semibold ${titleSize} ${titleColor}`}>{title}</h2>
+  {
+    subtitle && (
+      <p class={`max-w-[600px] text-[17px] leading-[1.5] ${subColor}`}>
+        {subtitle}
+      </p>
+    )
+  }
+</div>

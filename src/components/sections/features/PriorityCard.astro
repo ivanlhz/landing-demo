@@ -1,0 +1,41 @@
+---
+import Icon from '../../ui/Icon.astro';
+import Badge from '../../ui/Badge.astro';
+
+const items = [
+  { n: '01', label: 'Importador de Jira', tag: 'Alto', active: false },
+  { n: '02', label: 'Vista de cronograma v2', tag: 'Alto', active: true },
+  { n: '03', label: 'Comentarios en hilo', tag: 'Medio', active: false },
+  { n: '04', label: 'Modo enfoque', tag: 'Bajo', active: false },
+];
+---
+
+<div class="flex items-center justify-between">
+  <span class="font-mono text-[11px] tracking-[0.6px] text-ink-3">PRIORIDAD AUTOMÁTICA</span>
+  <Badge icon="sparkles">auto</Badge>
+</div>
+
+<ul class="flex flex-col gap-2.5">
+  {
+    items.map((item) => (
+      <li
+        class:list={[
+          'flex items-center gap-3 rounded-[18px] border px-3.5 py-3',
+          item.active ? 'border-accent bg-accent-soft' : 'border-line bg-bg',
+        ]}
+      >
+        <span class="font-mono text-[12px] text-ink-3">{item.n}</span>
+        <span class="flex-1 text-[14px] font-medium text-ink">{item.label}</span>
+        {item.active && <Icon name="arrow-up" size={15} class="text-accent" />}
+        <span
+          class:list={[
+            'rounded-full px-[9px] py-[3px] font-mono text-[11px] font-semibold',
+            item.active ? 'bg-accent text-on-accent' : 'bg-bg-muted text-ink-2',
+          ]}
+        >
+          {item.tag}
+        </span>
+      </li>
+    ))
+  }
+</ul>

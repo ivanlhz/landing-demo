@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+
+/** Logo — git-branch mark in a dark rounded square + wordmark. */
+interface Props {
+  size?: 'sm' | 'md';
+  class?: string;
+}
+const { size = 'md', class: className = '' } = Astro.props;
+const box = size === 'sm' ? 'h-7 w-7' : 'h-[30px] w-[30px]';
+const icon = size === 'sm' ? 16 : 17;
+const gap = size === 'sm' ? 'gap-2.5' : 'gap-2.5';
+---
+
+<a href="/" class={`inline-flex items-center ${gap} ${className}`}>
+  <span class={`flex ${box} items-center justify-center rounded-[10px] bg-ink`}>
+    <Icon name="git-branch" size={icon} class="text-bg" />
+  </span>
+  <span class="font-sans text-[18px] font-bold tracking-[-0.3px] text-ink">Stride</span>
+</a>

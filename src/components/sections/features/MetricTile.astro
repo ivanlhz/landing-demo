@@ -1,0 +1,35 @@
+---
+import Icon from '../../ui/Icon.astro';
+
+/** MetricTile — a single KPI tile inside the "Esta semana" card. */
+interface Props {
+  label: string;
+  value: string;
+  trend: string;
+  trendIcon?: 'trending-up' | 'trending-down';
+  active?: boolean;
+}
+const {
+  label,
+  value,
+  trend,
+  trendIcon = 'trending-up',
+  active = false,
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    'flex flex-col gap-2.5 rounded-[18px] border p-[18px]',
+    active ? 'border-accent bg-accent-soft' : 'border-line bg-bg',
+  ]}
+>
+  <span class="font-mono text-[11px] tracking-[0.3px] text-ink-3">{label}</span>
+  <span class="font-mono text-[26px] font-semibold tracking-[-0.5px] text-ink">{value}</span>
+  <div class="flex items-center gap-1">
+    <Icon name={trendIcon} size={13} class={active ? 'text-accent' : 'text-ink-3'} />
+    <span class:list={['font-mono text-[11px]', active ? 'text-accent-ink' : 'text-ink-3']}>
+      {trend}
+    </span>
+  </div>
+</div>

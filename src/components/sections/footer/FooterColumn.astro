@@ -1,0 +1,22 @@
+---
+/** FooterColumn — a titled list of footer links. */
+interface Props {
+  title: string;
+  links: string[];
+}
+const { title, links } = Astro.props;
+---
+
+<div class="flex flex-col gap-3.5">
+  <span class="font-mono text-[11px] uppercase tracking-[0.8px] text-ink-3">{title}</span>
+  {
+    links.map((link) => (
+      <a
+        href="#"
+        class="text-[14px] font-medium text-ink-2 transition-colors hover:text-ink"
+      >
+        {link}
+      </a>
+    ))
+  }
+</div>

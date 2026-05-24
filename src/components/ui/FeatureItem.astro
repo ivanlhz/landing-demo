@@ -1,0 +1,30 @@
+---
+import Icon from './Icon.astro';
+
+/**
+ * FeatureItem — a checkmark + label row used in pricing lists.
+ * `marker="circle"` renders the soft accent circle (Pro plan); `marker="plain"`
+ * renders a bare accent check (Free/Business plans).
+ */
+interface Props {
+  marker?: 'circle' | 'plain';
+  size?: 'sm' | 'md';
+  class?: string;
+}
+const { marker = 'circle', size = 'md', class: className = '' } = Astro.props;
+const textSize = size === 'sm' ? 'text-[13px]' : 'text-[14px]';
+const gap = size === 'sm' ? 'gap-[9px]' : 'gap-2.5';
+---
+
+<div class={`flex items-center ${gap} ${className}`}>
+  {
+    marker === 'circle' ? (
+      <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-soft">
+        <Icon name="check" size={12} class="text-accent" />
+      </span>
+    ) : (
+      <Icon name="check" size={15} class="shrink-0 text-accent" />
+    )
+  }
+  <span class={`${textSize} text-ink-2`}><slot /></span>
+</div>

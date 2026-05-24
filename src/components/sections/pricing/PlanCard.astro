@@ -1,0 +1,30 @@
+---
+import FeatureItem from '../../ui/FeatureItem.astro';
+import Button from '../../ui/Button.astro';
+
+/** PlanCard — compact secondary plan (Free / Business). */
+interface Props {
+  name: string;
+  price: string;
+  note: string;
+  features: string[];
+  ctaLabel: string;
+  ctaHref?: string;
+}
+const { name, price, note, features, ctaLabel, ctaHref = '#' } = Astro.props;
+---
+
+<div class="flex flex-col gap-4 rounded-[28px] border border-line bg-surface p-7">
+  <div class="flex items-center justify-between">
+    <span class="text-[17px] font-bold text-ink">{name}</span>
+    <span class="font-mono text-[24px] font-semibold tracking-[-1px] text-ink">{price}</span>
+  </div>
+
+  <span class="font-mono text-[12px] text-ink-3">{note}</span>
+
+  <div class="flex flex-col gap-[9px]">
+    {features.map((f) => <FeatureItem marker="plain" size="sm">{f}</FeatureItem>)}
+  </div>
+
+  <Button href={ctaHref} variant="soft" size="sm" icon="arrow-right" full>{ctaLabel}</Button>
+</div>
